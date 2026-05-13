@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Cálculo Diferencial | Visual y Dinámico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+      MathJax = { 
+          tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }, 
+          svg: { fontCache: 'global' } 
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+
+    <!-- Menú Lateral -->
+    <nav class="sidebar glass">
+        <div class="logo">Cálculo<span>Vecta</span></div>
+        <p class="sidebar-subtitle">Guía Interactiva</p>
+        <div class="nav-links">
+            <a href="#mod1">1. Fundamentos</a>
+            <a href="#mod2">2. Definición y Continuidad</a>
+            <a href="#mod3">3. Reglas Básicas</a>
+            <a href="#mod4">4. Reglas Avanzadas</a>
+            <a href="#mod5">5. Aplicaciones Geométricas</a>
+            <a href="#mod6">6. Aplicaciones Físicas</a>
+            <a href="#practica">7. Repositorio de Práctica</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header id="inicio" class="hero">
+            <div class="hero-content">
+                <h1 class="title">Curso Interactivo de <br><span class="text-gradient">Cálculo Diferencial</span></h1>
+                <p class="subtitle">Descubre la esencia del cambio continuo. Visualizaciones interactivas, explicaciones intuitivas y resolución exhaustiva paso a paso.</p>
+            </div>
+        </header>
+
+        <!-- MÓDULO 1 -->
+        <section id="mod1" class="section">
+            <h2 class="section-title"><span class="text-gradient">Módulo 1:</span> Fundamentos y Conceptos Iniciales</h2>
+            
+            <div class="card glass theory-card">
+                <h3>1.1 La Esencia de la Derivada</h3>
+                <p>La derivada nos ayuda a entender el cambio de forma microscópica. Mientras que la tasa de cambio promedio nos da una idea general en un gran intervalo de tiempo, la <strong>razón de cambio instantánea</strong> nos dice exactamente qué está pasando en un instante congelado en el tiempo.</p>
+                
+                <div class="interactive-module">
+                    <h4 class="module-title">💡 Diseño Interactivo: De la Secante a la Tangente</h4>
+                    <p>Desliza el valor de la distancia $h$ hacia el centro ($0$). Observa visualmente cómo el punto $Q$ se arrastra hacia $P$. Al acercarse, la recta secante (punteada verde) se estabiliza y encarna mágicamente en la recta tangente (naranja vibrante). ¡Esto es el límite en acción pura!</p>
+                    <div id="calc-secante" class="desmos-container"></div>
+                </div>
+            </div>
+
+            <div class="card glass theory-card mt-4">
+                <h3>1.2 Estimación a Partir de Tablas</h3>
+                <p>A veces el mundo real no nos regala funciones algebraicas, sino simples lecturas de datos. Para estimar la derivada (la pendiente) en un punto aislado $x=a$ usando una tabla, tomamos la pendiente promedio utilizando el punto inmediatamente a su izquierda y a su derecha.</p>
+            </div>
+        </section>
+
+        <!-- MÓDULO 2 -->
+        <section id="mod2" class="section">
+            <h2 class="section-title"><span class="text-gradient">Módulo 2:</span> Definición Formal y Diferenciabilidad</h2>
+            
+            <div class="card glass theory-card">
+                <h3>2.1 La Regla del Límite</h3>
+                <p>La derivada formal de una función $f(x)$ denotada como $f'(x)$ se construye a partir del límite del cociente de diferencias. Expresa la reducción de la distancia entre dos puntos hasta rozar el cero:</p>
+                <div class="math-highlight">
+                    $$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
+                </div>
+
+                <div class="step-guide mt-4">
+                    <h4>Guía Paso a Paso: Derivación por Definición</h4>
+                    <p><strong>Objetivo:</strong> Encontrar la derivada usando la fórmula base.</p>
+                    <ul class="steps-list">
+                        <li><strong>Paso 1:</strong> Construye $f(x+h)$. Toma la función original y reemplaza cada $x$ que veas por $(x+h)$.</li>
+                        <li><strong>Paso 2:</strong> Plantea el límite. Escribe la fórmula completa sustituyendo $f(x+h)$ y $f(x)$.</li>
+                        <li><strong>Paso 3:</strong> Expande el numerador. Resuelve los binomios al cuadrado, al cubo, o distribuye las multiplicaciones en el numerador.</li>
+                        <li><strong>Paso 4:</strong> Cancela términos. Todo término en el numerador que no tenga una $h$ debe cancelarse matemáticamente con su opuesto (por ejemplo, un $x^2$ con un $-x^2$). Si no se cancelan, revisa tus signos.</li>
+                        <li><strong>Paso 5:</strong> Factoriza la $h$. Ahora todos los términos del numerador tienen al menos una $h$. Saca la $h$ como factor común: $h(\text{términos restantes})$.</li>
+                        <li><strong>Paso 6:</strong> Simplifica la fracción. Cancela la $h$ que factorizaste en el numerador con la $h$ que está sola en el denominador. ¡Adiós a la indeterminación $\frac{0}{0}$!</li>
+                        <li><strong>Paso 7:</strong> Evalúa el límite. Sustituye $h = 0$ en los términos que quedaron. El resultado es tu derivada $f'(x)$.</li>
+                    </ul>
+                    
+                    <h4 class="mt-3">Ejemplos Prácticos</h4>
+                    <div class="example-grid">
+                        <div class="example-item">
+                            <p><strong>Función constante:</strong> $f(x) = 5$</p>
+                            <div class="math-highlight">$$f'(x) = \lim_{h \to 0} \frac{5 - 5}{h} = \lim_{h \to 0} \frac{0}{h} = 0$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Función lineal:</strong> $f(x) = 3x$</p>
+                            <div class="math-highlight">$$f'(x) = \lim_{h \to 0} \frac{3(x+h) - 3x}{h} = \lim_{h \to 0} \frac{3h}{h} = 3$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Función cuadrática simple:</strong> $f(x) = x^2$</p>
+                            <div class="math-highlight">$$f'(x) = \lim_{h \to 0} \frac{(x+h)^2 - x^2}{h} = \lim_{h \to 0} \frac{x^2 + 2xh + h^2 - x^2}{h} = \lim_{h \to 0} (2x + h) = 2x$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Cuadrática compuesta:</strong> $f(x) = x^2 + x$</p>
+                            <div class="math-highlight">$$f'(x) = \lim_{h \to 0} \frac{((x+h)^2 + (x+h)) - (x^2 + x)}{h} = \lim_{h \to 0} \frac{2xh + h^2 + h}{h} = \lim_{h \to 0} (2x + h + 1) = 2x + 1$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Inversa:</strong> $f(x) = \frac{1}{x}$</p>
+                            <div class="math-highlight">$$f'(x) = \lim_{h \to 0} \frac{\frac{1}{x+h} - \frac{1}{x}}{h} = \lim_{h \to 0} \frac{\frac{x - (x+h)}{x(x+h)}}{h} = \lim_{h \to 0} \frac{-h}{h \cdot x(x+h)} = \lim_{h \to 0} \frac{-1}{x(x+h)} = -\frac{1}{x^2}$$</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card glass theory-card mt-4">
+                <h3>2.2 Diferenciabilidad vs. Continuidad</h3>
+                <div class="explain-box">
+                    <h4>💡 Continuidad no asegura Diferenciabilidad</h4>
+                    <p>Que una función sea continua significa que puedes trazarla de un extremo a otro sin levantar el lápiz (no hay saltos). Sin embargo, para que tenga derivada, la curva debe ser "suave" (carecer de vértices filosos). Los límites de las pendientes calculadas por la izquierda y por la derecha deben estar en perfecto acuerdo mutuo.</p>
+                </div>
+                
+                <div class="interactive-module">
+                    <h4 class="module-title">💡 Simulador: El Análisis del "Pico"</h4>
+                    <p>En la función de valor absoluto $f(x) = |x|$ hay un pico dramático en $x=0$. Observa el panel: si nos acercamos por la izquierda la pendiente es estrictamente $-1$. Si lo hacemos por la derecha, la pendiente es $+1$. Como hay un violento desacuerdo en las trayectorias, afirmamos matemáticamente que la función <strong>no es diferenciable</strong> en ese vértice.</p>
+                    <div id="calc-diferenciabilidad" class="desmos-container"></div>
+                </div>
+
+                <div class="step-guide mt-4">
+                    <h4>Guía Paso a Paso: Análisis del "Pico"</h4>
+                    <p><strong>Objetivo:</strong> Comprobar matemáticamente si una función se puede derivar en un punto "sospechoso" (usualmente $x=0$ o un cambio de rama).</p>
+                    <ul class="steps-list">
+                        <li><strong>Paso 1:</strong> Verifica la continuidad. Calcula el límite de la función original cuando $x$ se acerca al punto por la izquierda y por la derecha. Si dan distinto, hay un "salto" y la función no es derivable. Fin del problema.</li>
+                        <li><strong>Paso 2:</strong> Deriva la función. Si la función está definida a trozos, deriva cada parte por separado.</li>
+                        <li><strong>Paso 3:</strong> Evalúa los límites laterales de la derivada. Toma tu nueva función derivada $f'(x)$ y calcula el límite acercándote al punto problemático por la izquierda y por la derecha.</li>
+                        <li><strong>Paso 4:</strong> Compara.
+                            <ul class="steps-list" style="margin-top:10px;">
+                                <li style="padding:10px;">Si los dos límites dan el mismo número real, las pendientes coinciden suavemente: <strong>Es diferenciable</strong>.</li>
+                                <li style="padding:10px;">Si dan números distintos (ej. $-1$ y $1$), las trayectorias chocan bruscamente formando un "pico": <strong>No es diferenciable</strong>.</li>
+                                <li style="padding:10px;">Si el límite da $\infty$, hay una tangente vertical: <strong>No es diferenciable</strong>.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h4 class="mt-3">Ejemplos Prácticos</h4>
+                    <div class="example-grid">
+                        <!-- Problem 2 -->
+                        <div class="example-item">
+                            <p><strong>Problema 2:</strong> $f(x) = \begin{cases} 3 - 2x, & \text{si } x < 2 \\ 3x - 7, & \text{si } 2 \le x \end{cases} \quad \text{en } x_1 = 2$</p>
+                            <p><em>Análisis:</em> 
+                            Límite izquierdo: $3 - 2(2) = -1$. Límite derecho: $3(2) - 7 = -1$. (Es continua en $y = -1$). <br>
+                            Derivada izquierda: $-2$. Derivada derecha: $3$. <br>
+                            <strong>Conclusión:</strong> Al tener pendientes distintas ($-2 \neq 3$), se forma un pico. <strong>No es diferenciable.</strong></p>
+                            <div id="calc-img-2" class="desmos-container" style="height: 300px; margin-top: 15px;"></div>
+                        </div>
+
+                        <!-- Problem 3 -->
+                        <div class="example-item">
+                            <p><strong>Problema 3:</strong> $f(x) = |x - 3| \quad \text{en } x_1 = 3$</p>
+                            <p><em>Análisis:</em> 
+                            Límite en ambos lados es $0$. (Es continua en $y = 0$). <br>
+                            El valor absoluto crea una rama con pendiente $-1$ y otra con pendiente $1$. <br>
+                            <strong>Conclusión:</strong> Desacuerdo en pendientes ($-1 \neq 1$). <strong>No es diferenciable.</strong></p>
+                            <div id="calc-img-3" class="desmos-container" style="height: 300px; margin-top: 15px;"></div>
+                        </div>
+
+                        <!-- Problem 4 -->
+                        <div class="example-item">
+                            <p><strong>Problema 4:</strong> $f(x) = 1 + |x + 2| \quad \text{en } x_1 = -2$</p>
+                            <p><em>Análisis:</em> 
+                            Límite en ambos lados es $1$. (Es continua en $y = 1$). <br>
+                            La derivada por izquierda es $-1$, y por derecha es $1$. <br>
+                            <strong>Conclusión:</strong> Se forma un vértice afilado. <strong>No es diferenciable.</strong></p>
+                            <div id="calc-img-4" class="desmos-container" style="height: 300px; margin-top: 15px;"></div>
+                        </div>
+
+                        <!-- Problem 5 -->
+                        <div class="example-item">
+                            <p><strong>Problema 5:</strong> $f(x) = \begin{cases} -1, & \text{si } x < 0 \\ x - 1, & \text{si } 0 \le x \end{cases} \quad \text{en } x_1 = 0$</p>
+                            <p><em>Análisis:</em> 
+                            Límite izquierdo: $-1$. Límite derecho: $0 - 1 = -1$. (Es continua). <br>
+                            Derivada izquierda (constante): $0$. Derivada derecha (lineal): $1$. <br>
+                            <strong>Conclusión:</strong> Cambio brusco de pendiente ($0 \neq 1$). <strong>No es diferenciable.</strong></p>
+                            <div id="calc-img-5" class="desmos-container" style="height: 300px; margin-top: 15px;"></div>
+                        </div>
+
+                        <!-- Problem 8 -->
+                        <div class="example-item">
+                            <p><strong>Problema 8:</strong> $f(x) = \begin{cases} x^2 - 4, & \text{si } x < 2 \\ \sqrt{x - 2}, & \text{si } 2 \le x \end{cases} \quad \text{en } x_1 = 2$</p>
+                            <p><em>Análisis:</em> 
+                            Límite izquierdo: $2^2 - 4 = 0$. Límite derecho: $\sqrt{2 - 2} = 0$. (Es continua). <br>
+                            Derivada izq: $2x \to 4$. Derivada der: $\frac{1}{2\sqrt{x-2}} \to \infty$ (tangente vertical). <br>
+                            <strong>Conclusión:</strong> La rama derecha se vuelve infinitamente empinada. <strong>No es diferenciable.</strong></p>
+                            <div id="calc-img-8" class="desmos-container" style="height: 300px; margin-top: 15px;"></div>
+                        </div>
+
+                        <!-- Problem 9 -->
+                        <div class="example-item">
+                            <p><strong>Problema 9:</strong> $f(x) = \begin{cases} \sqrt{1 - x}, & \text{si } x < 1 \\ (1 - x)^2, & \text{si } 1 \le x \end{cases} \quad \text{en } x_1 = 1$</p>
+                            <p><em>Análisis:</em> 
+                            Límite izq: $\sqrt{0} = 0$. Límite der: $(0)^2 = 0$. (Es continua). <br>
+                            Derivada izq: $\frac{-1}{2\sqrt{1-x}} \to -\infty$. Derivada der: $-2(1-x) \to 0$. <br>
+                            <strong>Conclusión:</strong> La rama izquierda cae verticalmente. <strong>No es diferenciable.</strong></p>
+                            <div id="calc-img-9" class="desmos-container" style="height: 300px; margin-top: 15px;"></div>
+                        </div>
+
+                        <!-- Problem 10 -->
+                        <div class="example-item">
+                            <p><strong>Problema 10:</strong> $f(x) = \begin{cases} x^2, & \text{si } x < -1 \\ -1 - 2x, & \text{si } -1 \le x \end{cases} \quad \text{en } x_1 = -1$</p>
+                            <p><em>Análisis:</em> 
+                            Límite izq: $(-1)^2 = 1$. Límite der: $-1 - 2(-1) = 1$. (Es continua). <br>
+                            Derivada izq: $2x \to -2$. Derivada der: $-2$. <br>
+                            <strong>Conclusión:</strong> Ambas pendientes son exactamente $-2$. Las curvas se acoplan perfectamente suave. <strong>Sí es diferenciable.</strong> ($f'(-1) = -2$)</p>
+                            <div id="calc-img-10" class="desmos-container" style="height: 300px; margin-top: 15px;"></div>
+                        </div>
+
+                        <!-- Problem 11 -->
+                        <div class="example-item">
+                            <p><strong>Problema 11:</strong> $f(x) = \begin{cases} 2x^2 - 3, & \text{si } x \le 2 \\ 8x - 11, & \text{si } 2 < x \end{cases} \quad \text{en } x_1 = 2$</p>
+                            <p><em>Análisis:</em> 
+                            Límite izq: $2(4) - 3 = 5$. Límite der: $8(2) - 11 = 5$. (Es continua). <br>
+                            Derivada izq: $4x \to 8$. Derivada der: $8$. <br>
+                            <strong>Conclusión:</strong> Las pendientes concuerdan exactamente en $8$. La transición es fluida y sin vértices. <strong>Sí es diferenciable.</strong> ($f'(2) = 8$)</p>
+                            <div id="calc-img-11" class="desmos-container" style="height: 300px; margin-top: 15px;"></div>
+                        </div>
+
+                        <!-- Problem 12 -->
+                        <div class="example-item">
+                            <p><strong>Problema 12:</strong> $f(x) = \begin{cases} x^2 - 9, & \text{si } x < 3 \\ 6x - 18, & \text{si } 3 \le x \end{cases} \quad \text{en } x_1 = 3$</p>
+                            <p><em>Análisis:</em> 
+                            Límite izq: $9 - 9 = 0$. Límite der: $18 - 18 = 0$. (Es continua). <br>
+                            Derivada izq: $2x \to 6$. Derivada der: $6$. <br>
+                            <strong>Conclusión:</strong> La parábola y la recta tienen la misma pendiente $6$ en el empalme. <strong>Sí es diferenciable.</strong> ($f'(3) = 6$)</p>
+                            <div id="calc-img-12" class="desmos-container" style="height: 300px; margin-top: 15px;"></div>
+                        </div>
+
+                        <!-- Pico Trigonométrico -->
+                        <div class="example-item">
+                            <p><strong>Pico en funciones trigonométricas:</strong> $f(x) = |\sin(x)|$ en $x_1 = 0$</p>
+                            <p><em>Análisis:</em> Es continua en $x=0$. Por la izquierda la curva sube como $-\sin(x)$ (pendiente $-1$). Por la derecha sube como $\sin(x)$ (pendiente $1$). Un "rebote" genera un pico. <strong>No es diferenciable.</strong></p>
+                            <div id="calc-img-abs-1" class="desmos-container" style="height: 300px; margin-top: 15px;"></div>
+                        </div>
+
+                        <!-- Cúspide -->
+                        <div class="example-item">
+                            <p><strong>La Cúspide (tangente vertical):</strong> $f(x) = x^{2/3}$ en $x_1 = 0$</p>
+                            <p><em>Análisis:</em> Es continua. Su derivada $f'(x) = \frac{2}{3x^{1/3}}$ tiende a infinito cuando $x \to 0$. Forma una punta afilada con tangente vertical. <strong>No es diferenciable.</strong></p>
+                            <div id="calc-img-abs-2" class="desmos-container" style="height: 300px; margin-top: 15px;"></div>
+                        </div>
+
+                        <!-- Tangente Vertical -->
+                        <div class="example-item">
+                            <p><strong>Tangente Vertical estricta:</strong> $f(x) = \sqrt[3]{x}$ en $x_1 = 0$</p>
+                            <p><em>Análisis:</em> La curva es continua y suave, pero su derivada $f'(x) = \frac{1}{3x^{2/3}}$ es infinita en $x=0$. Al estar completamente vertical en ese instante, <strong>no es diferenciable.</strong></p>
+                            <div id="calc-img-abs-3" class="desmos-container" style="height: 300px; margin-top: 15px;"></div>
+                        </div>
+
+                        <!-- Problem 21 -->
+                        <div class="example-item">
+                            <p><strong>Problema 21:</strong> Definir $f$ como función a trozos y analizar diferenciabilidad.</p>
+                            <p>$$ f(x) = \begin{cases} 1 - x^2, & x \le -1 \\ x + 1, & -1 < x \le 0 \\ -x + 1, & 0 < x \le 1 \\ x - 1, & x > 1 \end{cases} $$</p>
+                            <p><em>Análisis de Derivadas:</em><br>
+                            $f'_{-}(-1) = 2$, $f'_{+}(-1) = 1$<br>
+                            $f'_{-}(0) = 1$, $f'_{+}(0) = -1$<br>
+                            $f'_{-}(1) = -1$, $f'_{+}(1) = 1$<br>
+                            <strong>Conclusión:</strong> $f$ no es diferenciable en $x = -1, 0, 1$ debido a que las derivadas laterales no coinciden (se forman picos/vértices).</p>
+                            <div id="calc-img-21" class="desmos-container" style="height: 300px; margin-top: 15px;"></div>
+                        </div>
+
+                        <!-- Problem 22 -->
+                        <div class="example-item">
+                            <p><strong>Problema 22:</strong> Definir $f$ como función a trozos y analizar diferenciabilidad.</p>
+                            <p>$$ f(x) = \begin{cases} (x + 1)^2, & x \le -1 \\ 2x + 2, & -1 < x \le 0 \\ -x + 2, & 0 < x \le 1 \\ x^2, & x > 1 \end{cases} $$</p>
+                            <p><em>Análisis de Derivadas:</em><br>
+                            $f'_{-}(-1) = 0$, $f'_{+}(-1) = 2$<br>
+                            $f'_{-}(0) = 2$, $f'_{+}(0) = -1$<br>
+                            $f'_{-}(1) = -1$, $f'_{+}(1) = 2$<br>
+                            <strong>Conclusión:</strong> $f$ no es diferenciable en $x = -1, 0, 1$ (vértices abruptos).</p>
+                            <div id="calc-img-22" class="desmos-container" style="height: 300px; margin-top: 15px;"></div>
+                        </div>
+
+                        <!-- Problem 23 -->
+                        <div class="example-item">
+                            <p><strong>Problema 23:</strong> Definir $f$ como función a trozos y analizar diferenciabilidad.</p>
+                            <p>$$ f(x) = \begin{cases} x + 2, & x \le -1 \\ -x^{1/3}, & -1 < x \le 0 \\ x^{1/3}, & 0 < x \le 1 \\ x, & x > 1 \end{cases} $$</p>
+                            <p><em>Análisis de Derivadas:</em><br>
+                            $f'_{-}(-1) = 1$, $f'_{+}(-1) = -1/3$<br>
+                            $f'_{-}(0) = -\infty$, $f'_{+}(0) = \infty$ (Cúspide con tangente vertical)<br>
+                            $f'_{-}(1) = 1/3$, $f'_{+}(1) = 1$<br>
+                            <strong>Conclusión:</strong> $f$ no es diferenciable en $x = -1, 0, 1$ por desacuerdos de pendiente y tangentes verticales.</p>
+                            <div id="calc-img-23" class="desmos-container" style="height: 300px; margin-top: 15px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MÓDULO 3 -->
+        <section id="mod3" class="section">
+            <h2 class="section-title"><span class="text-gradient">Módulo 3:</span> Reglas Básicas de Derivación</h2>
+            <p class="section-desc">Atajos formales para evadir el extenso proceso de aplicar límites manualmente.</p>
+            
+            <div class="theory-grid">
+                <div class="card glass theory-card">
+                    <h3>Regla de las Potencias</h3>
+                    <p>El exponente desciende a multiplicar y su valor original se reduce en uno.</p>
+                    <div class="math-highlight">$$\frac{d}{dx}[x^n] = n x^{n-1}$$</div>
+                </div>
+                <div class="card glass theory-card theory-card-span-2">
+                    <h3>Trascendentales Clásicas</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+                        <div>
+                            <p style="color: #e0e0e0; margin-bottom: 5px;"><strong>Trigonométricas:</strong></p>
+                            <div class="math-highlight" style="margin-top: 10px; height: calc(100% - 30px); display: flex; align-items: center; justify-content: center;">
+                                $$
+                                \begin{aligned}
+                                \frac{d}{dx}[\sin x] &= \cos x \\[1ex]
+                                \frac{d}{dx}[\cos x] &= -\sin x \\[1ex]
+                                \frac{d}{dx}[\tan x] &= \sec^2 x \\[1ex]
+                                \frac{d}{dx}[\cot x] &= -\csc^2 x \\[1ex]
+                                \frac{d}{dx}[\sec x] &= \sec x \tan x \\[1ex]
+                                \frac{d}{dx}[\csc x] &= -\csc x \cot x
+                                \end{aligned}
+                                $$
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column;">
+                            <p style="color: #e0e0e0; margin-bottom: 5px;"><strong>Exponenciales y Logarítmicas:</strong></p>
+                            <div class="math-highlight" style="margin-top: 10px; flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+                                $$
+                                \begin{aligned}
+                                \frac{d}{dx}[e^x] &= e^x \\[1ex]
+                                \frac{d}{dx}[\ln x] &= \frac{1}{x}
+                                \end{aligned}
+                                $$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card glass theory-card theory-card-full mt-4">
+                    <h3>Derivadas de Raíces</h3>
+                    <div class="step-guide mt-2">
+                        <p><strong>Objetivo:</strong> Evitar fórmulas complejas y tratar las raíces como simples exponentes.</p>
+                        <ul class="steps-list">
+                            <li><strong>Paso 1:</strong> Reescribe (Elimina la raíz visualmente). Usa la propiedad del álgebra $\sqrt[n]{u^m} = u^{m/n}$. Por ejemplo, $\sqrt[3]{x^2}$ se convierte en $x^{2/3}$. Si la raíz está en el denominador, súbela poniéndole signo negativo al exponente: $\frac{1}{\sqrt{x}} = x^{-1/2}$.</li>
+                            <li><strong>Paso 2:</strong> Deriva con la regla de la potencia. Baja el exponente fraccionario multiplicando y réstale $1$ al exponente. (Recuerda que restar 1 es lo mismo que restar $\frac{n}{n}$).</li>
+                            <li><strong>Paso 3:</strong> Aplica cadena (si es necesario). Si dentro de la raíz había algo más complejo que una simple $x$ (por ejemplo $3x^2+2$), multiplica tu resultado por la derivada de eso de adentro.</li>
+                            <li><strong>Paso 4:</strong> Acomoda la respuesta (opcional pero formal). Si te quedó un exponente negativo, bájalo al denominador. Si te quedó un exponente fraccionario, conviértelo de nuevo a formato de raíz.</li>
+                        </ul>
+
+                        <h4 class="mt-3">Ejemplos Prácticos</h4>
+                        <div class="example-grid">
+                            <div class="example-item">
+                                <p><strong>Raíz cuadrada simple:</strong> $f(x) = \sqrt{x} = x^{1/2}$</p>
+                                <div class="math-highlight">$$f'(x) = \frac{1}{2}x^{-1/2} = \frac{1}{2\sqrt{x}}$$</div>
+                            </div>
+                            <div class="example-item">
+                                <p><strong>Raíz cúbica simple:</strong> $f(x) = \sqrt[3]{x} = x^{1/3}$</p>
+                                <div class="math-highlight">$$f'(x) = \frac{1}{3}x^{-2/3} = \frac{1}{3\sqrt[3]{x^2}}$$</div>
+                            </div>
+                            <div class="example-item">
+                                <p><strong>Raíz con regla de la cadena:</strong> $f(x) = \sqrt{3x^2 + 5} = (3x^2 + 5)^{1/2}$</p>
+                                <div class="math-highlight">$$f'(x) = \frac{1}{2}(3x^2 + 5)^{-1/2} \cdot (6x) = \frac{3x}{\sqrt{3x^2 + 5}}$$</div>
+                            </div>
+                            <div class="example-item">
+                                <p><strong>Raíz en el denominador:</strong> $f(x) = \frac{1}{\sqrt{x}} = x^{-1/2}$</p>
+                                <div class="math-highlight">$$f'(x) = -\frac{1}{2}x^{-3/2} = -\frac{1}{2x\sqrt{x}}$$</div>
+                            </div>
+                            <div class="example-item">
+                                <p><strong>Raíz trigonométrica:</strong> $f(x) = \sqrt{\cos(x)} = (\cos(x))^{1/2}$</p>
+                                <div class="math-highlight">$$f'(x) = \frac{1}{2}(\cos(x))^{-1/2} \cdot (-\sin(x)) = -\frac{\sin(x)}{2\sqrt{\cos(x)}}$$</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card glass theory-card theory-card-full">
+                    <h3>Operaciones Compuestas (Producto y Cociente)</h3>
+                    <div class="theory-grid">
+                        <div>
+                            <p><strong>Regla del Producto:</strong> Se deriva alternadamente y se suma.</p>
+                            <div class="math-highlight">$$\frac{d}{dx}[u \cdot v] = u \cdot v' + v \cdot u'$$</div>
+                        </div>
+                        <div>
+                            <p><strong>Regla del Cociente:</strong> Deriva alternado, resta y divide por el cuadrado del denominador.</p>
+                            <div class="math-highlight">$$\frac{d}{dx}\left[\frac{u}{v}\right] = \frac{v \cdot u' - u \cdot v'}{v^2}$$</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-guide mt-4">
+                        <h4>Guía Paso a Paso: Reglas del Producto y Cociente</h4>
+                        <p><strong>Objetivo:</strong> Derivar funciones donde hay multiplicación o división de variables.</p>
+                        
+                        <h5>Para el Producto ($u \cdot v$):</h5>
+                        <ul class="steps-list">
+                            <li><strong>Paso 1:</strong> Identifica quién es la primera función ($u$) y quién es la segunda ($v$).</li>
+                            <li><strong>Paso 2:</strong> Derívalas por separado en una esquina de tu hoja de papel (encuentra $u'$ y $v'$).</li>
+                            <li><strong>Paso 3:</strong> Aplica la cruz: Multiplica la primera sin derivar por la derivada de la segunda, y suma la segunda sin derivar por la derivada de la primera: $u \cdot v' + v \cdot u'$.</li>
+                        </ul>
+
+                        <h5 class="mt-3">Para el Cociente ($\frac{u}{v}$):</h5>
+                        <ul class="steps-list">
+                            <li><strong>Paso 1:</strong> Identifica el numerador ($u$) y el denominador ($v$).</li>
+                            <li><strong>Paso 2:</strong> Encuentra sus derivadas ($u'$ y $v'$).</li>
+                            <li><strong>Paso 3:</strong> Aplica la regla estricta (el orden importa por el signo menos): El de abajo por la derivada del de arriba, MENOS el de arriba por la derivada del de abajo: $v \cdot u' - u \cdot v'$.</li>
+                            <li><strong>Paso 4:</strong> Divide todo ese resultado entre el cuadrado del denominador original: $v^2$. (Casi nunca necesitas expandir este denominador al final).</li>
+                        </ul>
+
+                        <h4 class="mt-3">Ejemplos Prácticos</h4>
+                        <div class="example-grid">
+                            <div class="example-item">
+                                <p><strong>Producto simple:</strong> $f(x) = x^2 \sin(x)$</p>
+                                <div class="math-highlight">$$f'(x) = (x^2)(\cos(x)) + (\sin(x))(2x) = x^2\cos(x) + 2x\sin(x)$$</div>
+                            </div>
+                            <div class="example-item">
+                                <p><strong>Producto con exponencial:</strong> $f(x) = e^x \ln(x)$</p>
+                                <div class="math-highlight">$$f'(x) = (e^x)\left(\frac{1}{x}\right) + (\ln(x))(e^x) = e^x \left(\frac{1}{x} + \ln(x)\right)$$</div>
+                            </div>
+                            <div class="example-item">
+                                <p><strong>Cociente polinómico:</strong> $f(x) = \frac{x^2}{x+1}$</p>
+                                <div class="math-highlight">$$f'(x) = \frac{(x+1)(2x) - (x^2)(1)}{(x+1)^2} = \frac{2x^2 + 2x - x^2}{(x+1)^2} = \frac{x^2 + 2x}{(x+1)^2}$$</div>
+                            </div>
+                            <div class="example-item">
+                                <p><strong>Cociente trigonométrico:</strong> $f(x) = \frac{\sin(x)}{x}$</p>
+                                <div class="math-highlight">$$f'(x) = \frac{(x)(\cos(x)) - (\sin(x))(1)}{x^2} = \frac{x\cos(x) - \sin(x)}{x^2}$$</div>
+                            </div>
+                            <div class="example-item">
+                                <p><strong>Cociente con exponencial:</strong> $f(x) = \frac{e^x}{\cos(x)}$</p>
+                                <div class="math-highlight">$$f'(x) = \frac{(\cos(x))(e^x) - (e^x)(-\sin(x))}{\cos^2(x)} = \frac{e^x(\cos(x) + \sin(x))}{\cos^2(x)}$$</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MÓDULO 4 -->
+        <section id="mod4" class="section">
+            <h2 class="section-title"><span class="text-gradient">Módulo 4:</span> Reglas Avanzadas y Especiales</h2>
+            
+            <div class="card glass theory-card">
+                <h3>4.1 La Regla de la Cadena</h3>
+                <p>Reconocida como el núcleo operativo del cálculo aplicado, su propósito es desentrañar funciones compuestas o "anidadas" de la forma $f(g(x))$.</p>
+                <div class="math-highlight">$$\frac{d}{dx}[f(g(x))] = f'(g(x)) \cdot g'(x)$$</div>
+                <div class="metaphor-box">
+                    <p>⚙️ <strong>Metáfora Visual (La Cebolla):</strong> Visualiza la función como una cebolla con múltiples capas. Para derivarla, primero "pelas" la cáscara exterior derivándola sin alterar el núcleo. Finalmente, multiplicas el resultado por la derivada en cadena de ese núcleo interior expuesto.</p>
+                </div>
+
+                <div class="step-guide mt-4">
+                    <h4>Guía Paso a Paso: La Regla de la Cadena</h4>
+                    <p><strong>Objetivo:</strong> Derivar funciones anidadas o compuestas.</p>
+                    <ul class="steps-list">
+                        <li><strong>Paso 1:</strong> Identifica las capas. Reconoce cuál es la función "exterior" (la cáscara) y cuál es la "interior" (el núcleo).</li>
+                        <li><strong>Paso 2:</strong> Deriva la capa exterior. Aplica la regla correspondiente a la función de afuera (potencia, seno, logaritmo), pero deja lo de adentro exactamente igual. No lo toques todavía.</li>
+                        <li><strong>Paso 3:</strong> Multiplica por la derivada de lo de adentro. Ahora sí, deriva el núcleo y multiplica tu resultado anterior por esto.</li>
+                        <li><strong>Paso 4:</strong> Repite si hay más capas. Si adentro había otra función anidada, sigues multiplicando como una reacción en cadena.</li>
+                    </ul>
+
+                    <h4 class="mt-3">Ejemplos Prácticos</h4>
+                    <div class="example-grid">
+                        <div class="example-item">
+                            <p><strong>Polinomio anidado:</strong> $f(x) = (2x+3)^4$</p>
+                            <div class="math-highlight">$$f'(x) = 4(2x+3)^3 \cdot \frac{d}{dx}(2x+3) = 8(2x+3)^3$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Trigonométrica anidada:</strong> $f(x) = \sin(x^3)$</p>
+                            <div class="math-highlight">$$f'(x) = \cos(x^3) \cdot \frac{d}{dx}(x^3) = 3x^2\cos(x^3)$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Exponencial compuesta:</strong> $f(x) = e^{5x^2}$</p>
+                            <div class="math-highlight">$$f'(x) = e^{5x^2} \cdot \frac{d}{dx}(5x^2) = 10x e^{5x^2}$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Logaritmo natural:</strong> $f(x) = \ln(x^2 + 1)$</p>
+                            <div class="math-highlight">$$f'(x) = \frac{1}{x^2+1} \cdot \frac{d}{dx}(x^2+1) = \frac{2x}{x^2+1}$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Doble cadena:</strong> $f(x) = \cos^3(x)$</p>
+                            <div class="math-highlight">$$f'(x) = 3(\cos(x))^2 (-\sin(x)) = -3\sin(x)\cos^2(x)$$</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card glass theory-card mt-4">
+                <h3>4.2 Derivación Implícita</h3>
+                <p>En el mundo real, no siempre tendremos el lujo de una función explícita $y = f(x)$. Si nos enfrentamos a figuras geométricas bloqueadas como un círculo ($x^2 + y^2 = r^2$), asumimos que $y$ es un ente implícito vivo. Derivamos ambos lados normalmente, pero multiplicamos por $y'$ cada vez que manipulemos un término que albergue una $y$.</p>
+
+                <div class="step-guide mt-4">
+                    <h4>Guía Paso a Paso: Derivación Implícita</h4>
+                    <p><strong>Objetivo:</strong> Derivar cuando la $y$ está mezclada con la $x$ y no se puede (o es muy difícil) despejar.</p>
+                    <ul class="steps-list">
+                        <li><strong>Paso 1:</strong> Deriva término a término. Recorre toda la ecuación de izquierda a derecha derivando cada pieza respecto a $x$.</li>
+                        <li><strong>Paso 2:</strong> La regla de oro de la $y$. Cada vez que derives un término que contiene $y$, aplica la regla normal, pero inmediatamente multiplica ese resultado por $y'$ (o $\frac{dy}{dx}$). Esto es vital.</li>
+                        <li><strong>Paso 3:</strong> Agrupa. Mueve todos los términos que contengan $y'$ hacia el lado izquierdo de la igualdad. Mueve todos los términos que NO tengan $y'$ hacia el lado derecho.</li>
+                        <li><strong>Paso 4:</strong> Factoriza. En el lado izquierdo, saca factor común $y'$. Te quedará algo como: $y'(\text{paréntesis con términos}) = \text{lado derecho}$.</li>
+                        <li><strong>Paso 5:</strong> Despeja $y'$. Pasa el paréntesis que multiplica a la $y'$ dividiendo hacia el lado derecho.</li>
+                    </ul>
+
+                    <h4 class="mt-3">Ejemplos Prácticos</h4>
+                    <div class="example-grid">
+                        <div class="example-item">
+                            <p><strong>Circunferencia:</strong> $x^2 + y^2 = 25$</p>
+                            <div class="math-highlight">$$2x + 2yy' = 0 \implies 2yy' = -2x \implies y' = -\frac{x}{y}$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Hipérbola:</strong> $xy = 1$</p>
+                            <div class="math-highlight">$$(1)(y) + (x)(y') = 0 \implies xy' = -y \implies y' = -\frac{y}{x}$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Combinación polinómica:</strong> $y^3 + x^3 = 3xy$</p>
+                            <div class="math-highlight">$$3y^2y' + 3x^2 = 3y + 3xy' \implies y' = \frac{y-x^2}{y^2-x}$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Trigonométrica implícita:</strong> $\sin(y) = x^2$</p>
+                            <div class="math-highlight">$$\cos(y)y' = 2x \implies y' = \frac{2x}{\cos(y)}$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Exponencial implícita:</strong> $e^y + y = x$</p>
+                            <div class="math-highlight">$$e^yy' + y' = 1 \implies y'(e^y + 1) = 1 \implies y' = \frac{1}{e^y + 1}$$</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card glass theory-card mt-4">
+                <h3>4.3 Estrategias de Optimización y Simplificación</h3>
+                <p>Un ingeniero inteligente simplifica antes de atacar. Si posees una expresión monstruosa con muchos logaritmos, desarma la expresión primero. Si te enfrentas a una incógnita tanto en la base como en el exponente (como $x^x$), aplica un logaritmo a ambos lados para forzar al exponente a caer en una multiplicación lineal. A esto se le conoce como <strong>Diferenciación Logarítmica</strong>.</p>
+                
+                <div class="step-guide mt-4">
+                    <h4>Guía Paso a Paso: Derivación Logarítmica</h4>
+                    <p><strong>Objetivo:</strong> Derivar algo con la estructura $x^x$ o $f(x)^{g(x)}$.</p>
+                    <ul class="steps-list">
+                        <li><strong>Paso 1:</strong> Escribe la ecuación. Escríbelo como $y = f(x)^{g(x)}$.</li>
+                        <li><strong>Paso 2:</strong> Aplica logaritmos naturales. Pon $\ln$ a ambos lados de la igualdad: $\ln(y) = \ln(f(x)^{g(x)})$.</li>
+                        <li><strong>Paso 3:</strong> Baja el exponente. Usa la propiedad de los logaritmos para poner el exponente multiplicando al frente: $\ln(y) = g(x) \cdot \ln(f(x))$.</li>
+                        <li><strong>Paso 4:</strong> Derivación implícita. El lado izquierdo $\ln(y)$ siempre, absolutamente siempre, se derivará como: $\frac{y'}{y}$. El lado derecho se deriva usando la Regla del Producto (tienes $g(x)$ multiplicado por un logaritmo).</li>
+                        <li><strong>Paso 5:</strong> Pasa la $y$ multiplicando. Despeja $y'$ pasando la $y$ del denominador multiplicando a todo el lado derecho.</li>
+                        <li><strong>Paso 6:</strong> Restituye el valor original. Cambia esa $y$ por su función original ($f(x)^{g(x)}$) para que la respuesta final quede solo en términos de $x$.</li>
+                    </ul>
+
+                    <h4 class="mt-3">Ejemplos Prácticos</h4>
+                    <div class="example-grid">
+                        <div class="example-item">
+                            <p><strong>El caso base:</strong> $y = x^x$</p>
+                            <div class="math-highlight">$$\ln(y) = x \ln(x) \implies y' = x^x(\ln(x) + 1)$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Base polinómica, exp. trig.:</strong> $y = x^{\sin(x)}$</p>
+                            <div class="math-highlight">$$\ln(y) = \sin(x)\ln(x) \implies y' = x^{\sin(x)} \left( \cos(x)\ln(x) + \frac{\sin(x)}{x} \right)$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Base trigonométrica, exp. polinómico:</strong> $y = (\sin(x))^x$</p>
+                            <div class="math-highlight">$$\ln(y) = x\ln(\sin(x)) \implies y' = (\sin(x))^x (\ln(\sin(x)) + x\cot(x))$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Logaritmo al logaritmo:</strong> $y = x^{\ln(x)}$</p>
+                            <div class="math-highlight">$$\ln(y) = (\ln(x))^2 \implies y' = x^{\ln(x)} \left( \frac{2\ln(x)}{x} \right)$$</div>
+                        </div>
+                        <div class="example-item">
+                            <p><strong>Exponente fraccionario inverso:</strong> $y = x^{1/x}$</p>
+                            <div class="math-highlight">$$\ln(y) = \frac{\ln(x)}{x} \implies y' = x^{1/x} \left( \frac{1 - \ln(x)}{x^2} \right)$$</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MÓDULO 5 -->
+        <section id="mod5" class="section">
+            <h2 class="section-title"><span class="text-gradient">Módulo 5:</span> Aplicaciones Geométricas</h2>
+            <p class="section-desc">Entendiendo la íntima relación gráfica entre tangentes, normales y paralelas.</p>
+
+            <div class="card glass theory-card">
+                <h3>5.1 Ortogonalidad de las Rectas Tangente y Normal</h3>
+                <p>Geométricamente, la derivada en un punto es simplemente la pendiente ($m_t$) de la <strong>recta tangente</strong> que "roza" a la curva en esa coordenada.</p>
+                <p>La <strong>recta normal</strong>, por otro lado, es una línea que apuñala a la curva en ese exacto punto cruzando perpendicularmente a la tangente (formando un ángulo rígido de 90°). Su pendiente ($m_n$) siempre será el recíproco invertido y negativo de la tangente.</p>
+                <div class="math-highlight">
+                    $$m_t \cdot m_n = -1 \quad \implies \quad m_n = -\frac{1}{m_t}$$
+                </div>
+
+                <div class="step-guide mt-4 mb-2">
+                    <h4>Guía Paso a Paso: Ecuación de la Recta Tangente</h4>
+                    <p><strong>Objetivo:</strong> Hallar la ecuación de la línea recta que toca a la curva en un solo punto $x_0$.</p>
+                    <ul class="steps-list">
+                        <li><strong>Paso 1:</strong> Encuentra la coordenada $y$ (si no te la dan). Toma el valor de $x_0$ y evalúalo en la función original: $y_0 = f(x_0)$. Ahora tienes tu punto de contacto $(x_0, y_0)$.</li>
+                        <li><strong>Paso 2:</strong> Deriva la función. Calcula $f'(x)$ usando las reglas de derivación (producto, cadena, etc.).</li>
+                        <li><strong>Paso 3:</strong> Encuentra la pendiente ($m$). Evalúa el punto $x_0$ en la derivada que acabas de encontrar: $m = f'(x_0)$. Esta es la inclinación de tu recta.</li>
+                        <li><strong>Paso 4:</strong> Usa la fórmula punto-pendiente. Escribe la ecuación estándar de la recta: $y - y_0 = m(x - x_0)$.</li>
+                        <li><strong>Paso 5:</strong> Despeja $y$ (opcional pero recomendado). Simplifica la ecuación para dejarla en la forma $y = mx + b$.</li>
+                    </ul>
+                </div>
+                
+                <div class="explain-box">
+                    <h4>💡 Profundización: El truco de las rectas paralelas</h4>
+                    <p>Los problemas universitarios suelen pedirte "halla la recta tangente que sea paralela a la recta $3x + y = 2$". Recuerda esta regla de oro: <strong>rectas paralelas comparten la misma pendiente</strong>.</p>
+                    <p>Solo debes despejar $y$ en la ecuación que te regalan ($y = -3x + 2$) para extraer su pendiente maestra ($-3$). Luego, igualas la derivada de tu función a ese valor ($f'(x) = -3$) y resuelves para encontrar en qué coordenadas específicas de $x$ ocurre este fenómeno.</p>
+                </div>
+                
+                <div class="interactive-module mt-4">
+                    <h4 class="module-title">💡 Entorno Geométrico: Tangentes vs Normales</h4>
+                    <p>Arrastra el deslizador de $x=a$ a lo largo del logaritmo $f(x) = \ln(x)$. Mira cómo el anclaje dinámico recalcula simultáneamente la tangente cálida (naranja) y la normal de alto contraste (cian), manteniendo el cruce perfectamente ortogonal en cualquier coordenada.</p>
+                    <div id="calc-geometria" class="desmos-container"></div>
+                
+                <!-- Ejercicio 41 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 41:</strong> Derivada de suma con exponente negativo</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Encuentre $\frac{dy}{dx}$ para $y = 3x + \frac{6}{x^2}$.</p>
+                            <p><strong>Paso 1:</strong> Reescribimos la función para evitar la regla del cociente, subiendo la $x$ con exponente negativo.</p>
+                            <div class="math-box">$$y = 3x + 6x^{-2}$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2:</strong> Aplicamos la regla de la potencia a cada término.</p>
+                            <div class="math-box result-box">$$\frac{dy}{dx} = 3 - 12x^{-3} = 3 - \frac{12}{x^3}$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <h4 class="module-title">💡 Visualización Gráfica</h4>
+                            <p>La curva azul es la función $y$ y la naranja es su derivada $y'$. Observa la asíntota vertical en $x=0$.</p>
+                            <div id="calc-prob-41" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 42 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 42:</strong> Derivada de una raíz cúbica</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Encuentre $\frac{dy}{dx}$ para $y = \sqrt[3]{x}$.</p>
+                            <p><strong>Paso 1:</strong> Reescribimos la raíz como un exponente fraccionario.</p>
+                            <div class="math-box">$$y = x^{1/3}$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2:</strong> Aplicamos la regla de la potencia (bajamos $1/3$ y restamos $1$ al exponente: $1/3 - 1 = -2/3$).</p>
+                            <div class="math-box result-box">$$\frac{dy}{dx} = \frac{1}{3}x^{-2/3} = \frac{1}{3\sqrt[3]{x^2}}$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <h4 class="module-title">💡 Visualización Gráfica</h4>
+                            <p>En $x=0$, la derivada (curva naranja) diverge al infinito, revelando la tangente vertical en la función cúbica (curva azul).</p>
+                            <div id="calc-prob-42" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 43 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 43:</strong> Regla de la cadena con raíz en denominador</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Encuentre $\frac{dy}{dx}$ para $y = \frac{1}{\sqrt{x-1}}$.</p>
+                            <p><strong>Paso 1:</strong> Convertimos a exponente fraccionario negativo para aplicar la cadena directamente.</p>
+                            <div class="math-box">$$y = (x-1)^{-1/2}$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2:</strong> Regla de la cadena: bajamos $-1/2$, restamos $1$ al exponente, y multiplicamos por la derivada interna ($1$).</p>
+                            <div class="math-box result-box">$$\frac{dy}{dx} = -\frac{1}{2}(x-1)^{-3/2} = -\frac{1}{2\sqrt{(x-1)^3}}$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prob-43" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 44 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 44:</strong> Cociente simplificado mediante exponente negativo</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Encuentre $\frac{dy}{dx}$ para $y = \frac{4}{2x-5}$.</p>
+                            <p><strong>Paso 1:</strong> Es un cociente simple, es mejor subir el denominador para usar la cadena.</p>
+                            <div class="math-box">$$y = 4(2x-5)^{-1}$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2:</strong> Regla de la cadena: bajamos $-1$ a multiplicar al $4$, restamos $1$, y multiplicamos por la derivada de lo de adentro ($2$).</p>
+                            <div class="math-box">$$\frac{dy}{dx} = 4(-1)(2x-5)^{-2}(2)$$</div>
+                            <div class="math-box result-box">$$\frac{dy}{dx} = \frac{-8}{(2x-5)^2}$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prob-44" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 45 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 45:</strong> Recta Tangente Paralela a Otra Recta</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Obtenga la ecuación de la recta tangente a la curva $y = 2x^2 + 3$ paralela a la recta $8x - y + 3 = 0$.</p>
+                            <p><strong>Paso 1:</strong> Despejamos $y$ en la recta dada para extraer su pendiente: $y = 8x + 3 \implies m = 8$.</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2:</strong> Obligamos a la derivada de nuestra curva a igualar a $8$.</p>
+                            <div class="math-box">$$y' = 4x = 8 \implies x = 2$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3:</strong> Hallamos la coordenada $y$ original en $x=2$ para el punto de tangencia.</p>
+                            <div class="math-box">$$y(2) = 2(2)^2 + 3 = 11 \implies P(2,11)$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 4:</strong> Construimos la recta con $P(2,11)$ y $m=8$.</p>
+                            <div class="math-box result-box">$$y - 11 = 8(x - 2) \implies y = 8x - 5$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <h4 class="module-title">💡 Visualización Gráfica</h4>
+                            <p>En el gráfico, la curva original es azul. La recta guía punteada es negra. Y la recta tangente encontrada es naranja, perfectamente paralela a la recta guía tocando la curva en el punto rojo $(2,11)$.</p>
+                            <div id="calc-prob-45" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 46 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 46:</strong> Tangente Paralela con Coordenadas Fraccionarias</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Ecuación de la recta tangente a $y = 3x^2 - 4$ paralela a $3x + y = 4$.</p>
+                            <p><strong>Paso 1:</strong> La recta guía despejada es $y = -3x + 4$, cuya pendiente es $m = -3$.</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2:</strong> Derivamos e igualamos a la pendiente robada.</p>
+                            <div class="math-box">$$y' = 6x = -3 \implies x = -\frac{1}{2}$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3:</strong> Encontramos la imagen del punto.</p>
+                            <div class="math-box">$$y\left(-\frac{1}{2}\right) = 3\left(\frac{1}{4}\right) - 4 = -\frac{13}{4} \implies P\left(-\frac{1}{2}, -\frac{13}{4}\right)$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 4:</strong> Aplicamos punto-pendiente.</p>
+                            <div class="math-box">$$y - \left(-\frac{13}{4}\right) = -3\left(x - \left(-\frac{1}{2}\right)\right)$$</div>
+                            <div class="math-box result-box">$$y = -3x - \frac{19}{4}$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prob-46" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 47 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 47:</strong> Recta Normal Emparejada</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Encuentre la ecuación de la recta NORMAL a $y = 2 - \frac{1}{3}x^2$ paralela a $x - y = 0$.</p>
+                            <p><strong>Paso 1:</strong> La recta guía es $y = x \implies$ pendiente $m = 1$.</p>
+                            <p>Dado que nuestra recta normal debe ser paralela a esta guía, requerimos que la pendiente de nuestra normal sea $m_n = 1$.</p>
+                            <p>Por ley de perpendicularidad, la pendiente de la tangente en ese mismo punto debe ser el recíproco negativo: $m_t = -1$.</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2:</strong> Derivamos y obligamos a que la tangente asuma $m_t = -1$.</p>
+                            <div class="math-box">$$y' = -\frac{2}{3}x = -1 \implies 2x = 3 \implies x = \frac{3}{2}$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3:</strong> Evaluamos para encontrar el punto en la curva.</p>
+                            <div class="math-box">$$y\left(\frac{3}{2}\right) = 2 - \frac{1}{3}\left(\frac{9}{4}\right) = 2 - \frac{3}{4} = \frac{5}{4} \implies P\left(\frac{3}{2}, \frac{5}{4}\right)$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 4:</strong> Ecuación de la normal usando $m_n = 1$.</p>
+                            <div class="math-box">$$y - \frac{5}{4} = 1\left(x - \frac{3}{2}\right)$$</div>
+                            <div class="math-box result-box">$$y = x - \frac{1}{4}$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <h4 class="module-title">💡 Visualización Gráfica</h4>
+                            <p>Aquí se ilustra la curva principal (azul) y su recta Normal (cian) que cruza perpendicularmente al contorno de la curva y es completamente paralela a la recta punteada guía.</p>
+                            <div id="calc-prob-47" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 48 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 48:</strong> Múltiples Rectas Normales Paralelas</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Ecuación de cada recta normal a la curva $y = x^3 - 3x$ paralela a $2x + 18y - 9 = 0$.</p>
+                            <p><strong>Paso 1:</strong> La recta guía tiene pendiente: $18y = -2x + 9 \implies y = -\frac{1}{9}x + \frac{1}{2} \implies m_n = -\frac{1}{9}$.</p>
+                            <p>Dado que la normal tiene pendiente $-1/9$, las tangentes en esos puntos deben tener pendiente $m_t = 9$.</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2:</strong> Buscamos qué puntos en la curva ostentan tangente $m_t = 9$.</p>
+                            <div class="math-box">$$y' = 3x^2 - 3 = 9 \implies 3x^2 = 12 \implies x^2 = 4 \implies x = \pm 2$$</div>
+                            <p>¡Existen dos puntos! Calculemos sus coordenadas $y$:</p>
+                            <p>Para $x = 2 \implies y = (2)^3 - 3(2) = 2 \implies P_1(2,2)$</p>
+                            <p>Para $x = -2 \implies y = (-2)^3 - 3(-2) = -2 \implies P_2(-2,-2)$</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3:</strong> Construimos las dos rectas normales, ambas usando $m_n = -1/9$.</p>
+                            <p>Normal 1 en $(2,2)$:</p>
+                            <div class="math-box result-box">$$y - 2 = -\frac{1}{9}(x - 2) \implies y = -\frac{1}{9}x + \frac{20}{9}$$</div>
+                            <p>Normal 2 en $(-2,-2)$:</p>
+                            <div class="math-box result-box">$$y + 2 = -\frac{1}{9}(x + 2) \implies y = -\frac{1}{9}x - \frac{20}{9}$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prob-48" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 49 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 49:</strong> Demostración de No-Existencia (Punto Exterior)</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Demuestre que no existe una recta que pase por $(1,5)$ tangente a $y = 4x^2$.</p>
+                            <p><strong>Paso 1: Planteamiento de la Tangente General.</strong></p>
+                            <p>Imaginemos un punto de tangencia genérico en la curva: $(a, 4a^2)$.</p>
+                            <p>La derivada evaluada en $a$ es la pendiente: $y' = 8x \implies m_t = 8a$.</p>
+                            <p>La ecuación de esta tangente universal sería: $y - 4a^2 = 8a(x - a)$.</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2: Forzar el paso por $(1,5)$.</strong></p>
+                            <p>Si la tangente debe pasar por $x=1, y=5$, inyectamos esas coordenadas en la ecuación:</p>
+                            <div class="math-box">$$5 - 4a^2 = 8a(1 - a)$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3: Resolución de la Paradoja.</strong></p>
+                            <div class="math-box">$$5 - 4a^2 = 8a - 8a^2 \implies 4a^2 - 8a + 5 = 0$$</div>
+                            <p>Intentemos resolver esto usando la fórmula cuadrática: $\Delta = b^2 - 4ac$</p>
+                            <div class="math-box">$$\Delta = (-8)^2 - 4(4)(5) = 64 - 80 = -16$$</div>
+                            <div class="math-box result-box">Como el discriminante es negativo, no existe ningún número real $a$. Esto demuestra lógicamente que es geométricamente imposible trazar dicha tangente.</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <h4 class="module-title">💡 Visualización Gráfica</h4>
+                            <p>El punto $(1,5)$ reside "dentro" de la concavidad de la parábola azul. Es geométricamente imposible estirar una línea recta a través de este punto exterior que logre rozar la parábola en un solo punto sin atravesarla doblemente (secante).</p>
+                            <div id="calc-prob-49" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 50 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 50:</strong> Demostración de No-Existencia 2</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Demuestre que no existe una recta que pase por $(1,2)$ tangente a $y = 4 - x^2$.</p>
+                            <p><strong>Paso 1: Ecuación General.</strong> Sea el punto de tangencia hipotético $(a, 4-a^2)$.</p>
+                            <p>Pendiente $m_t = -2a$. Ecuación de la tangente: $y - (4-a^2) = -2a(x - a)$.</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2: Forzado y Resolución.</strong> Forzamos a pasar por $(x=1, y=2)$.</p>
+                            <div class="math-box">$$2 - (4-a^2) = -2a(1 - a) \implies a^2 - 2 = -2a + 2a^2$$</div>
+                            <div class="math-box">$$a^2 - 2a + 2 = 0$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3: Análisis del Discriminante.</strong></p>
+                            <div class="math-box">$$\Delta = (-2)^2 - 4(1)(2) = 4 - 8 = -4$$</div>
+                            <div class="math-box result-box">Dado que $\Delta < 0$, no hay raíz real. Geométricamente, el punto queda "encerrado" bajo la parábola invertida, bloqueando cualquier trazado tangente.</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prob-50" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 51 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 51:</strong> Teorema de Continuidad y Derivabilidad de un Producto</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Si $g$ es continua en $a$ y $f(x) = (x-a)g(x)$, determine $f'(a)$ por definición.</p>
+                            <p><strong>Paso 1: El límite maestro.</strong> La fórmula (7) exige plantear el límite formal de la derivada en un punto:</p>
+                            <div class="math-box">$$f'(a) = \lim_{x \to a} \frac{f(x) - f(a)}{x-a}$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2: Evaluar la base.</strong> Calculemos cuánto vale $f(a)$ exacto:</p>
+                            <div class="math-box">$$f(a) = (a-a)g(a) = 0 \cdot g(a) = 0$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3: Sustitución y Limpieza.</strong></p>
+                            <div class="math-box">$$f'(a) = \lim_{x \to a} \frac{(x-a)g(x) - 0}{x-a} = \lim_{x \to a} g(x)$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 4: El uso de la continuidad.</strong></p>
+                            <p>Como el problema especifica rigurosamente que $g$ es "continua" en $a$, sabemos por el teorema de límites que el límite asume el valor puro de la evaluación:</p>
+                            <div class="math-box result-box">$$f'(a) = g(a)$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <h4 class="module-title">💡 Visualización Gráfica (Ejemplo Práctico)</h4>
+                            <p>Si asumimos $a=2$ y una función cualquiera continua $g(x)=\sin(x)$, entonces $f(x)=(x-2)\sin(x)$. En la gráfica, fíjate como la pendiente $f'(2)$ de la tangente naranja coincide analíticamente con el valor de la función interna $g(2)$.</p>
+                            <div id="calc-prob-51" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 52 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 52:</strong> Teorema de Continuidad Aplicado a un Binomio Cuadrático</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Si $g$ es continua en $a$ y $f(x) = (x^2-a^2)g(x)$, determine $f'(a)$.</p>
+                            <p><strong>Paso 1: Planteamiento y Factorización.</strong> Similar al anterior, pero antes factorizamos el producto notable $x^2-a^2 = (x-a)(x+a)$:</p>
+                            <div class="math-box">$$f'(a) = \lim_{x \to a} \frac{f(x) - f(a)}{x-a}$$</div>
+                            <div class="math-box">$$f(a) = (a^2-a^2)g(a) = 0$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2: Simplificación.</strong></p>
+                            <div class="math-box">$$f'(a) = \lim_{x \to a} \frac{(x-a)(x+a)g(x)}{x-a} = \lim_{x \to a} (x+a)g(x)$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3: Evaluación y Continuidad.</strong> Al evaluar en $x=a$, y siendo $g$ continua:</p>
+                            <div class="math-box result-box">$$f'(a) = (a+a)g(a) = 2a \cdot g(a)$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prob-52" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+</div>
+            </div>
+        </section>
+
+        <!-- MÓDULO 6 -->
+        <section id="mod6" class="section">
+            <h2 class="section-title"><span class="text-gradient">Módulo 6:</span> Aplicaciones Físicas y Dinámicas</h2>
+            
+            <div class="card glass theory-card">
+                <h3>6.1 Cinemática Computacional</h3>
+                <p>Las leyes de movimiento están regidas intrínsecamente por cascadas de derivadas:</p>
+                <div class="math-box">Función de Posición $\rightarrow s(t)$</div>
+                <div class="math-box">Función de Velocidad $\rightarrow v(t) = s'(t)$</div>
+                <div class="math-box">Función de Aceleración $\rightarrow a(t) = v'(t) = s''(t)$</div>
+                
+                <div class="interactive-module mt-4">
+                    <h4 class="module-title">💡 Explorador Físico: Ejes Dinámicos</h4>
+                    <p>Este panel apila las funciones de posición (azul), velocidad (verde) y aceleración (rojo). Desliza la barra del tiempo $t_0$. Fíjate críticamente en los instantes donde la posición hace un valle o cima plana: la gráfica verde de velocidad es obligada a cruzar el eje horizontal cero (demostrando reposo físico absoluto).</p>
+                    <div id="calc-cinematica" class="desmos-container"></div>
+                </div>
+            </div>
+
+            <div class="card glass theory-card mt-4">
+                <h3>6.2 Razones de Cambio Relacionadas</h3>
+                <p>Abordan situaciones donde variables geométricas o de volumen fluctúan orgánicamente respecto al tic-tac de un reloj $t$. Se resuelven conectando variables a través del Teorema de Pitágoras o semejanzas, y procediendo con una derivación implícita en la métrica del tiempo.</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 7: RESOLUCIONES -->
+        <section id="practica" class="section">
+            <h2 class="section-title"><span class="text-gradient">7. Repositorio de Práctica:</span> Resoluciones Exhaustivas</h2>
+            <p class="section-desc">Selección de los ejercicios más desafiantes desarrollados a mano, con lógica profunda para evitar confusiones comunes.</p>
+            
+            <div class="accordion">
+                <!-- Ejercicio 1 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 1:</strong> Límite de la Derivada con Radicales</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Calcula la derivada de $f(x) = \sqrt{x}$ mediante la definición formal.</p>
+                            <p><strong>Paso 1 (Planteamiento):</strong> Ensamblamos la estructura del límite.</p>
+                            <div class="math-box">$$f'(x) = \lim_{h \to 0} \frac{\sqrt{x+h} - \sqrt{x}}{h}$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2 (Racionalización Salvadora):</strong> Como evaluar con cero rompe la ecuación, multiplicamos por un "1" conveniente usando el conjugado del numerador.</p>
+                            <div class="math-box">$$= \lim_{h \to 0} \frac{\sqrt{x+h} - \sqrt{x}}{h} \cdot \frac{\sqrt{x+h} + \sqrt{x}}{\sqrt{x+h} + \sqrt{x}}$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3 (Diferencia de Cuadrados):</strong> El numerador pierde maravillosamente las raíces colapsando en $(x+h) - x = h$.</p>
+                            <div class="math-box">$$= \lim_{h \to 0} \frac{h}{h(\sqrt{x+h} + \sqrt{x})}$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 4 (Evaluación Limpia):</strong> Tachamos las letras $h$ liberadas para matar la indeterminación. Sustituimos $h=0$ pacíficamente.</p>
+                            <div class="math-box result-box">$$f'(x) = \frac{1}{2\sqrt{x}}$$</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 2 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 2:</strong> Regla de la Cadena y Trigonométricas Inversas</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Halla analíticamente la derivada de la compuesta $y = \cos^{-1}(8x^2)$.</p>
+                            <p><strong>Identificación de Capas:</strong> Visualicemos la matriz exterior como $\cos^{-1}(u)$ y el núcleo encapsulado como $u = 8x^2$.</p>
+                            <div class="math-box">$$\frac{d}{du}[\cos^{-1}(u)] = \frac{-1}{\sqrt{1-u^2}} \quad ; \quad u' = 16x$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Acople Maestro:</strong> Multiplicamos exterior derivado evaluado en $u$, por la derivada viva de $u$.</p>
+                            <div class="math-box">$$y' = \frac{-1}{\sqrt{1-(8x^2)^2}} \cdot 16x$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Síntesis Algebraica:</strong> Agrupamos y aplicamos el cuadrado interno final.</p>
+                            <div class="math-box result-box">$$y' = \frac{-16x}{\sqrt{1-64x^4}}$$</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 3 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 3:</strong> Estrategia de Diferenciación Logarítmica</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Deriva limpiamente la función conflictiva $y = x^x$.</p>
+                            <p><strong>Paso 1 (Inyección del Logaritmo):</strong> Al tener variable en la base y variable de exponente, no aplican reglas comunes. Forzamos un logaritmo $\ln$ en ambos bandos para desplomar el exponente.</p>
+                            <div class="math-box">$$\ln(y) = x \ln(x)$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2 (Derivación Doble):</strong> A la izquierda actuamos implícitamente, y a la derecha con la clásica regla del producto.</p>
+                            <div class="math-box">$$\frac{1}{y} \frac{dy}{dx} = (1)\ln(x) + x\left(\frac{1}{x}\right)$$</div>
+                            <div class="math-box">$$\implies \frac{1}{y} \frac{dy}{dx} = \ln(x) + 1$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3 (Aislamiento Total):</strong> Pasamos $y$ multiplicando y la devolvemos a su identidad inicial.</p>
+                            <div class="math-box result-box">$$y' = x^x (\ln(x) + 1)$$</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 4 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 4:</strong> Ecuaciones de Rectas en Trascendentales</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Determina las rectas tangente y normal exactas a la curva $f(x) = \ln x$ en el abscisa $x = 1$.</p>
+                            <p><strong>Paso 1 (Anclaje):</strong> Descubrimos el punto completo evaluando en la matriz original: $\ln(1) = 0$. Coordenada $(1, 0)$.</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2 (Extracción de Pendientes):</strong> El motor geométrico nos dicta derivar. $f'(x) = 1/x$.</p>
+                            <p>Al evaluar en $x=1$, la pendiente rasante tangente es vibrante: $m_t = 1/1 = 1$.</p>
+                            <p>Por la regla sagrada de la ortogonalidad, la pendiente normal se voltea y niega: $m_n = -1/1 = -1$.</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3 (Ensamblaje Lineal):</strong> Usamos la coraza punto-pendiente: $y - y_1 = m(x - x_1)$.</p>
+                            <p><strong>Ecuación de la Tangente:</strong> $y - 0 = 1(x - 1)$</p>
+                            <div class="math-box result-box">$$y = x - 1$$</div>
+                            <p><strong>Ecuación de la Normal:</strong> $y - 0 = -1(x - 1)$</p>
+                            <div class="math-box result-box">$$y = -x + 1$$</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 5 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 5:</strong> Tangente Emparejada Paralelamente</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Halla rectas para $f(x) = x^2 - 5x + 6$ sabiendo que la tangente debe ser un clon paralelo a la línea recta $3x + 2y - 2 = 0$.</p>
+                            <p><strong>Paso 1 (Robo de Pendiente):</strong> Despejamos el impostor para ver su pendiente de inclinación: $2y = -3x + 2 \implies y = -1.5x + 1$. Nuestra tangente heredará por ley este mismo rasgo: $m_t = -1.5$.</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2 (Caza de Coordenadas):</strong> Obligamos a la función a doblarse a nuestra voluntad, igualando su derivada a la pendiente robada.</p>
+                            <div class="math-box">$$f'(x) = 2x - 5 = -1.5 \implies 2x = 3.5 \implies x = 1.75$$</div>
+                            <p>Evaluamos esta coordenada en la base intacta: $f(1.75) = 0.3125$. Punto capturado: $(1.75, 0.3125)$.</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3 (Fabricación de Rectas):</strong></p>
+                            <p><strong>Construcción Tangente:</strong></p>
+                            <div class="math-box result-box">$$y - 0.3125 = -1.5(x - 1.75)$$</div>
+                            <p><strong>Construcción Normal:</strong> Su pendiente debe ser invertida y alterada en signo ($-1 / -1.5 = 2/3 \approx 0.66$).</p>
+                            <div class="math-box result-box">$$y - 0.3125 = 0.66(x - 1.75)$$</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 6 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 6:</strong> Razones (Escalera Deslizante)</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Una escalera de 8 pies cae por un muro perdiendo altitud a $\frac{dy}{dt} = -2$ pies/seg. ¿A qué veloz ritmo se aleja la base horizontalmente ($\frac{dx}{dt}$) cuando dista 4 pies exactos del muro?</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 1 (Mapa Geométrico):</strong> Nos escudamos tras el modelo estático de Pitágoras: $x^2 + y^2 = 64$. Cuando la foto se toma en $x=4$, descubrimos que $16 + y^2 = 64 \Rightarrow y = \sqrt{48} = 4\sqrt{3}$.</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2 (Derivación Temporal Dinámica):</strong> Imbuimos la ecuación original de tiempo $t$ implícito.</p>
+                            <div class="math-box">$$2x \frac{dx}{dt} + 2y \frac{dy}{dt} = 0$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3 (Inyección Numérica y Despeje):</strong></p>
+                            <div class="math-box">$$2(4)\frac{dx}{dt} + 2(4\sqrt{3})(-2) = 0 \implies 8\frac{dx}{dt} = 16\sqrt{3}$$</div>
+                            <div class="math-box result-box">$$\frac{dx}{dt} = 2\sqrt{3} \text{ pies/seg}$$</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 7 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 7:</strong> Razones (Tanque Cónico de Agua)</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Un cono gigantesco ($r_{max}=4, h_{max}=10$) recibe bombeo a caudal $\frac{dV}{dt}=2$. Calcula la urgencia a la que asciende su nivel interior de agua ($\frac{dh}{dt}$) cruzando los 5 pies de marca.</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 1 (Reducción de Variables con Semejanzas):</strong> No queremos radios molestando. Ligamos radio y altura hídricas con las medidas maestras estructurales: $\frac{r}{h} = \frac{4}{10} \implies r = \frac{2}{5}h$.</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2 (Fusión al Volumen Absoluto):</strong></p>
+                            <div class="math-box">$$V = \frac{1}{3}\pi \left(\frac{2}{5}h\right)^2 h = \frac{4}{75}\pi h^3$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3 (Derivación e Integración de Datos):</strong> Derivando con cadena y aplicando $h=5$:</p>
+                            <div class="math-box">$$\frac{dV}{dt} = \frac{4}{75}\pi (3h^2) \frac{dh}{dt} \implies 2 = \frac{4}{25}\pi (25) \frac{dh}{dt}$$</div>
+                            <div class="math-box">$$2 = 4\pi \frac{dh}{dt}$$</div>
+                            <div class="math-box result-box">$$\frac{dh}{dt} = \frac{1}{2\pi} \text{ pies/min}$$</div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <!-- Ejercicio 9 (1) -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 9:</strong> Recta Tangente a $y = 9 - x^2$</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema 1:</strong> Obtenga la ecuación de la recta tangente a la gráfica de $y = 9 - x^2$ en el punto $(2, 5)$.</p>
+                            <p><strong>Paso 1 (Derivación):</strong> Encontramos la pendiente general derivando la función polinómica.</p>
+                            <div class="math-box">$$y' = -2x$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2 (Evaluación):</strong> Sustituimos la coordenada $x=2$ para encontrar la pendiente $m_t$ específica.</p>
+                            <div class="math-box">$$m_t = y'(2) = -2(2) = -4$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3 (Ecuación Tangente):</strong> Aplicamos la fórmula punto-pendiente con $m=-4$ y $P(2,5)$.</p>
+                            <div class="math-box">$$y - 5 = -4(x - 2) \implies y - 5 = -4x + 8$$</div>
+                            <div class="math-box result-box">$$y = -4x + 13$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <h4 class="module-title">💡 Visualización Gráfica</h4>
+                            <div id="calc-prac-9" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 10 (2) -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 10:</strong> Recta Tangente a $y = x^2 + 4$</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema 2:</strong> Obtenga la ecuación de la recta tangente a $y = x^2 + 4$ en el punto $(-1, 5)$.</p>
+                            <p><strong>Paso 1 (Derivación):</strong> Derivamos la función término a término.</p>
+                            <div class="math-box">$$y' = 2x$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2 (Evaluación de Pendiente):</strong> Reemplazamos $x = -1$.</p>
+                            <div class="math-box">$$m_t = 2(-1) = -2$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3 (Recta Tangente):</strong> Usamos el punto $(-1, 5)$.</p>
+                            <div class="math-box">$$y - 5 = -2(x - (-1)) \implies y - 5 = -2(x + 1)$$</div>
+                            <div class="math-box result-box">$$y = -2x + 3$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prac-10" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 11 (3) -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 11:</strong> Recta Tangente a $y = 2x^2 + 4x$</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema 3:</strong> Obtenga la ecuación de la recta tangente a $y = 2x^2 + 4x$ en el punto $(-2, 0)$.</p>
+                            <p><strong>Paso 1 (Derivación):</strong> La constante multiplica la bajada del exponente.</p>
+                            <div class="math-box">$$y' = 4x + 4$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2 (Evaluación):</strong></p>
+                            <div class="math-box">$$m_t = 4(-2) + 4 = -8 + 4 = -4$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3 (Ecuación):</strong> Evaluando en $(-2, 0)$.</p>
+                            <div class="math-box">$$y - 0 = -4(x - (-2))$$</div>
+                            <div class="math-box result-box">$$y = -4x - 8$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prac-11" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 12 (7) -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 12:</strong> Derivada de $f(x) = 3x^2 - 12x + 8$</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema 7:</strong> Derivación directa y análisis de tangente horizontal para $f(x) = 3x^2 - 12x + 8$.</p>
+                            <p><strong>Paso 1:</strong> Aplicamos reglas básicas de potencias y constante.</p>
+                            <div class="math-box result-box">$$f'(x) = 6x - 12$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Análisis Adicional:</strong> ¿Dónde la tangente es plana (horizontal)? Igualamos la derivada a cero.</p>
+                            <div class="math-box">$$6x - 12 = 0 \implies x = 2$$</div>
+                            <p>En el vértice de la parábola, en $x=2$, la pendiente es nula.</p>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prac-12" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 13 (8) -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 13:</strong> Derivada de $f(x) = 7 - 6x - x^2$</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema 8:</strong> Derivación de $f(x) = 7 - 6x - x^2$.</p>
+                            <p><strong>Paso 1:</strong> La constante $7$ se vuelve $0$, $-6x$ es $-6$, y $-x^2$ baja el exponente.</p>
+                            <div class="math-box result-box">$$f'(x) = -6 - 2x$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Análisis:</strong> Tangente horizontal cuando $-6 - 2x = 0 \implies x = -3$.</p>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prac-13" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 14 (9) -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 14:</strong> Derivada de $f(x) = x^3 - 6x^2 - 9x - 2$</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema 9:</strong> Derivación de $f(x) = x^3 - 6x^2 - 9x - 2$.</p>
+                            <div class="math-box result-box">$$f'(x) = 3x^2 - 12x - 9$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prac-14" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 15 (10) -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 15:</strong> Derivada de $f(x) = 2x^3 - 3x^2$</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema 10:</strong> Derivación de $f(x) = 2x^3 - 3x^2$.</p>
+                            <div class="math-box result-box">$$f'(x) = 6x^2 - 6x$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prac-15" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 16 (12) -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 16:</strong> Tangente y Normal con Raíces</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema 12:</strong> Obtenga las rectas tangente y normal a $y = \sqrt{4 - x}$ en $(-5, 3)$.</p>
+                            <p><strong>Paso 1 (Derivación con Cadena):</strong> Reescribimos como $y = (4 - x)^{1/2}$.</p>
+                            <div class="math-box">$$y' = rac{1}{2}(4-x)^{-1/2} \cdot (-1) = rac{-1}{2\sqrt{4-x}}$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2 (Pendientes):</strong> En $x=-5$.</p>
+                            <div class="math-box">$$m_t = rac{-1}{2\sqrt{4 - (-5)}} = rac{-1}{2\sqrt{9}} = -rac{1}{6}$$</div>
+                            <p>Pendiente normal (inverso negativo): $m_n = 6$.</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3 (Ecuaciones):</strong> En el punto $(-5, 3)$.</p>
+                            <p>Tangente:</p>
+                            <div class="math-box result-box">$$y - 3 = -rac{1}{6}(x + 5) \implies y = -rac{1}{6}x + rac{13}{6}$$</div>
+                            <p>Normal:</p>
+                            <div class="math-box result-box">$$y - 3 = 6(x + 5) \implies y = 6x + 33$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prac-16" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 17 (13) -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 17:</strong> Tangente y Normal Cúbica</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema 13:</strong> Tangente y normal a $y = 2x - x^3$ en $(-2, 4)$.</p>
+                            <p><strong>Paso 1 (Derivada):</strong></p>
+                            <div class="math-box">$$y' = 2 - 3x^2$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2 (Pendientes):</strong> $x = -2$.</p>
+                            <div class="math-box">$$m_t = 2 - 3(-2)^2 = 2 - 12 = -10$$</div>
+                            <p>Pendiente normal: $m_n = rac{1}{10} = 0.1$.</p>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3 (Ecuaciones):</strong> En $(-2, 4)$.</p>
+                            <p>Tangente:</p>
+                            <div class="math-box result-box">$$y - 4 = -10(x + 2) \implies y = -10x - 16$$</div>
+                            <p>Normal:</p>
+                            <div class="math-box result-box">$$y - 4 = 0.1(x + 2) \implies y = 0.1x + 4.2$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prac-17" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 18 (14) -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 18:</strong> Tangente y Normal en el Origen</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema 14:</strong> Tangente y normal a $y = x^3 - 4x$ en $(0, 0)$.</p>
+                            <div class="math-box">$$y' = 3x^2 - 4$$</div>
+                            <div class="math-box">$$m_t = 3(0)^2 - 4 = -4 \quad \implies \quad m_n = rac{1}{4} = 0.25$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Ecuaciones en $(0,0)$:</strong> Al pasar por el origen la ordenada es cero.</p>
+                            <div class="math-box result-box">$$	ext{Tangente: } y = -4x \quad \quad 	ext{Normal: } y = 0.25x$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prac-18" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 19 (15) -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 19:</strong> Tangente y Normal a Fracción</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema 15:</strong> Rectas tangente y normal a $y = rac{4}{x^2}$ en $(2, 1)$.</p>
+                            <p><strong>Paso 1:</strong> Subimos la variable: $y = 4x^{-2}$.</p>
+                            <div class="math-box">$$y' = -8x^{-3} = -rac{8}{x^3}$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2:</strong> Pendientes en $x=2$.</p>
+                            <div class="math-box">$$m_t = -rac{8}{2^3} = -1 \quad \implies \quad m_n = 1$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3:</strong> Ecuaciones.</p>
+                            <p>Tangente:</p>
+                            <div class="math-box result-box">$$y - 1 = -1(x - 2) \implies y = -x + 3$$</div>
+                            <p>Normal:</p>
+                            <div class="math-box result-box">$$y - 1 = 1(x - 2) \implies y = x - 1$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prac-19" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 20 (16) -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 20:</strong> Tangente y Normal a Raíz Invertida</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema 16:</strong> Rectas tangente y normal a $y = -rac{8}{\sqrt{x}}$ en $(4, -4)$.</p>
+                            <p><strong>Paso 1:</strong> Reescribimos como $y = -8x^{-1/2}$.</p>
+                            <div class="math-box">$$y' = (-8)\left(-rac{1}{2}ight)x^{-3/2} = 4x^{-3/2} = rac{4}{\sqrt{x^3}}$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 2:</strong> Pendientes en $x=4$. ($4^3=64 \implies \sqrt{64}=8$).</p>
+                            <div class="math-box">$$m_t = rac{4}{8} = rac{1}{2} = 0.5 \quad \implies \quad m_n = -2$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Paso 3:</strong> Ecuaciones en $(4, -4)$.</p>
+                            <p>Tangente:</p>
+                            <div class="math-box result-box">$$y - (-4) = 0.5(x - 4) \implies y = 0.5x - 6$$</div>
+                            <p>Normal:</p>
+                            <div class="math-box result-box">$$y + 4 = -2(x - 4) \implies y = -2x + 4$$</div>
+                        </div>
+                        <div class="interactive-module mt-4">
+                            <div id="calc-prac-20" class="desmos-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 8 -->
+                <div class="accordion-item glass">
+                    <button class="accordion-header"><span><strong>Ejercicio 8:</strong> Escaneo Cinemático Total</span><i class="icon-plus">+</i></button>
+                    <div class="accordion-content">
+                        <div class="solution-step">
+                            <p><strong>Problema:</strong> Posición registrada como $s(t) = t^3 - 6t^2 + 9t$. Deriva las funciones de cinemática subordinadas y encuentra momentos de congelación.</p>
+                            <div class="math-box">$$v(t) = s'(t) = 3t^2 - 12t + 9$$</div>
+                            <div class="math-box">$$a(t) = v'(t) = 6t - 12$$</div>
+                        </div>
+                        <div class="solution-step">
+                            <p><strong>Resolución de Reposo Absoluto:</strong> Exigimos que la velocidad choque a nivel cero ($v(t) = 0$).</p>
+                            <div class="math-box">$$3t^2 - 12t + 9 = 0 \implies t^2 - 4t + 3 = 0$$</div>
+                            <div class="math-box result-box">$$(t-3)(t-1) = 0 \implies \text{Reposante en } t=1 \text{ y } t=3 \text{ seg}$$</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>&copy; 2026 Tutoría de Cálculo Vecta. Arquitectado y diseñado por <strong>Juan Rodríguez</strong>.</p>
+        </footer>
+    </main>
+    <script type="module" src="/main.js"></script>
+</body>
+</html>

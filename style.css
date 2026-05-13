@@ -1,0 +1,343 @@
+:root {
+    --bg-color: #050505;
+    --text-main: #f0f0f0;
+    --text-muted: #a0a0a0;
+    --accent-neon: #ff2a2a;
+    --accent-glow: rgba(255, 42, 42, 0.6);
+    --glass-bg: rgba(20, 20, 20, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.background-effects {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: float 10s infinite ease-in-out alternate;
+}
+
+.orb-1 { width: 300px; height: 300px; background: var(--accent-glow); top: -50px; left: -50px; }
+.orb-2 { width: 400px; height: 400px; background: rgba(42, 42, 255, 0.3); bottom: -100px; right: -100px; animation-delay: -5s; }
+.orb-3 { width: 200px; height: 200px; background: rgba(255, 42, 255, 0.2); top: 40%; left: 40%; animation-duration: 15s; }
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, 50px) scale(1.1); }
+}
+
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 16px;
+}
+
+/* Sidebar Layout */
+.sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 290px;
+    height: 100vh;
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+    border-radius: 0;
+    border-top: none; border-left: none; border-bottom: none;
+    z-index: 100;
+}
+
+.sidebar .logo {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: -1px;
+}
+.sidebar .logo span { color: var(--accent-neon); }
+.sidebar-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.nav-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 400;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+    font-size: 1.05rem;
+}
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid var(--accent-neon);
+    color: var(--accent-neon);
+    transform: translateX(4px);
+}
+
+.main-content {
+    margin-left: 290px;
+    padding: 0 4rem;
+    max-width: 1800px;
+}
+
+/* Typography & Hero */
+.hero {
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.title { font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+.text-gradient {
+    background: linear-gradient(90deg, #ff4d4d, var(--accent-neon));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.subtitle { font-size: 1.3rem; color: var(--text-muted); max-width: 700px; line-height: 1.8; }
+
+/* Sections */
+.section { padding: 90px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.section:last-child { border-bottom: none; }
+.section-title { font-size: 2.8rem; margin-bottom: 1.5rem; font-weight: 800; }
+.section-desc { color: var(--text-muted); margin-bottom: 3rem; font-size: 1.15rem; max-width: 800px; }
+.mt-4 { margin-top: 2.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+
+/* Cards & Modules */
+.theory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.theory-card { padding: 36px; transition: transform 0.3s ease; }
+.theory-card:hover { transform: translateY(-4px); border-color: rgba(255,42,42,0.3); }
+.theory-card-full { grid-column: 1 / -1; }
+@media (min-width: 900px) {
+    .theory-card-span-2 { grid-column: span 2; }
+}
+.theory-card h3 { font-size: 1.6rem; margin-bottom: 1.2rem; color: #fff; }
+.theory-card p { font-size: 1.1rem; color: #d0d0d0; margin-bottom: 1rem; line-height: 1.7; }
+.theory-card ul { list-style-position: inside; color: #d0d0d0; font-size: 1.1rem; margin-bottom: 1rem; }
+.theory-card li { margin-bottom: 8px; }
+
+/* Highlight Boxes for Better Explanations */
+.explain-box {
+    background: rgba(42, 100, 255, 0.08);
+    border-left: 4px solid #4a90e2;
+    padding: 20px 24px;
+    border-radius: 0 8px 8px 0;
+    margin: 1.5rem 0;
+}
+.explain-box h4 { color: #4a90e2; margin-bottom: 10px; font-size: 1.2rem; }
+
+.metaphor-box {
+    background: rgba(255, 200, 0, 0.08);
+    border-left: 4px solid #f39c12;
+    padding: 20px 24px;
+    border-radius: 0 8px 8px 0;
+    margin: 1.5rem 0;
+}
+
+/* Math Styling (Vistoso y Grande) */
+.math-highlight {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 42, 42, 0.25);
+    box-shadow: 0 4px 20px rgba(255, 42, 42, 0.15);
+    margin: 2rem 0;
+    text-align: center;
+    overflow-x: auto;
+}
+.math-box {
+    background: rgba(255,255,255,0.03);
+    padding: 18px;
+    border-radius: 8px;
+    margin: 15px 0;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.result-box {
+    background: rgba(255, 42, 42, 0.1);
+    border: 1px solid var(--accent-neon);
+    font-weight: bold;
+    box-shadow: inset 0 0 20px rgba(255, 42, 42, 0.1);
+}
+
+/* Override MathJax SVG elements globally to be massive and readable */
+mjx-container[jax="SVG"][display="true"] {
+    font-size: 1.5em !important;
+}
+mjx-container[jax="SVG"] {
+    font-size: 1.15em;
+}
+
+/* Interactives (Desmos) */
+.interactive-module {
+    margin-top: 2.5rem;
+    padding: 25px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 12px;
+    border: 1px dashed rgba(255,255,255,0.2);
+}
+.module-title { font-size: 1.35rem; color: #fff; margin-bottom: 12px; }
+.desmos-container {
+    width: 100%;
+    height: 480px;
+    background: #fff;
+    border-radius: 8px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+/* Accordion para Repositorio */
+.accordion { display: flex; flex-direction: column; gap: 20px; }
+.accordion-item { overflow: hidden; }
+.accordion-header {
+    width: 100%; text-align: left; padding: 24px 28px;
+    background: rgba(20,20,20,0.6); border: none; color: var(--text-main);
+    font-size: 1.25rem; font-family: inherit; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+.accordion-header:hover { background: rgba(255,42,42,0.1); }
+.icon-plus { font-style: normal; font-size: 1.8rem; transition: transform 0.3s; color: var(--accent-neon); }
+.accordion-item.active .icon-plus { transform: rotate(45deg); }
+.accordion-content {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out;
+    background: rgba(0,0,0,0.2);
+    border-radius: 0 0 8px 8px;
+}
+.accordion-item.active .accordion-header { border-radius: 8px 8px 0 0; background: rgba(255,42,42,0.15); }
+.solution-step { padding: 24px 28px; border-top: 1px solid rgba(255,255,255,0.05); }
+.solution-step p { font-size: 1.1rem; color: #e0e0e0; margin-bottom: 10px; line-height: 1.6; }
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--text-muted);
+}
+.footer strong { color: var(--text-main); }
+
+/* Responsive */
+@media(max-width: 900px) {
+    .sidebar { width: 100%; height: auto; position: relative; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+    .sidebar .logo { margin-bottom: 0; }
+    .sidebar-subtitle { display: none; }
+    .nav-links { display: none; } /* Could be implemented with a burger menu if needed */
+    .main-content { margin-left: 0; padding: 2rem; }
+    .title { font-size: 3rem; }
+    .hero { height: auto; padding: 60px 0; }
+}
+
+@media(max-width: 600px) {
+    .main-content { padding: 1rem; }
+    .title { font-size: 2.2rem; }
+    .subtitle { font-size: 1.1rem; }
+    .section-title { font-size: 2rem; }
+    .theory-card { padding: 1.2rem; }
+    .math-highlight { padding: 15px 10px; margin: 1.5rem 0; font-size: 0.9rem; }
+    mjx-container[jax="SVG"][display="true"] { font-size: 1.1em !important; }
+    .accordion-header { padding: 16px 20px; font-size: 1.1rem; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .icon-plus { align-self: flex-end; }
+    .solution-step { padding: 16px 15px; }
+    .interactive-module { padding: 15px; }
+    .desmos-container { height: 350px; }
+    .sidebar { padding: 1rem; }
+    .hero { padding: 40px 0; }
+    .section { padding: 50px 0; }
+    .step-guide { padding: 16px; }
+    .example-item { padding: 15px; }
+}
+
+/* Step Guides & Examples */
+.step-guide {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 24px;
+}
+.step-guide h4 {
+    color: var(--accent-neon);
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+.step-guide h5 {
+    color: #e0e0e0;
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+    margin-top: 16px;
+}
+.steps-list {
+    list-style-type: none;
+    padding-left: 0 !important;
+}
+.steps-list li {
+    background: rgba(0, 0, 0, 0.3);
+    margin-bottom: 12px;
+    padding: 16px;
+    border-left: 3px solid var(--accent-neon);
+    border-radius: 0 8px 8px 0;
+}
+.steps-list li strong {
+    color: #fff;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+.example-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 16px;
+}
+.example-item {
+    background: rgba(20, 20, 20, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 42, 42, 0.1);
+}
+.example-item p {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    color: #d0d0d0;
+}
+.example-item .math-highlight {
+    padding: 15px;
+    margin: 10px 0 0 0;
+    font-size: 1.1rem;
+}
+
