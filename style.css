@@ -207,6 +207,11 @@ mjx-container[jax="SVG"][display="true"] {
 mjx-container[jax="SVG"] {
     font-size: 1.15em;
 }
+mjx-container {
+    max-width: 100%;
+    overflow-x: auto !important;
+    overflow-y: hidden;
+}
 
 /* Interactives (Desmos) */
 .interactive-module {
@@ -272,12 +277,12 @@ mjx-container[jax="SVG"] {
 
 @media(max-width: 600px) {
     .main-content { padding: 1rem; overflow-x: hidden; }
-    .title { font-size: 2.2rem; }
+    .title { font-size: 2.2rem; word-wrap: break-word; hyphens: auto; }
     .subtitle { font-size: 1.1rem; }
     .section-title { font-size: 1.8rem; }
     .theory-card { padding: 1.2rem; }
     .theory-grid { grid-template-columns: 1fr; gap: 16px; }
-    .math-highlight { padding: 15px 10px; margin: 1.5rem 0; font-size: 0.9rem; justify-content: flex-start !important; align-items: flex-start !important; text-align: left; }
+    .math-highlight { padding: 15px 10px; margin: 1.5rem 0; font-size: 0.9rem; display: block !important; overflow-x: auto !important; text-align: left; }
     mjx-container[jax="SVG"][display="true"] { font-size: 1.1em !important; margin: 0 !important; }
     .math-box { padding: 12px; font-size: 1rem; }
     
